@@ -3,8 +3,8 @@ const { Sitio } = require('../models/');
 module.exports = {
     create(req, res) {
         const { descripcion, latitud, longitud } = req.body;
-        const fotografia = req.files.fotografia ? req.files.fotografia[0].path : null;
-        const audiofile = req.files.audiofile ? req.files.audiofile[0].path : null;
+        const fotografia = req.files && req.files.fotografia ? req.files.fotografia[0].path : null;
+        const audiofile = req.files && req.files.audiofile ? req.files.audiofile[0].path : null;
 
         if (!descripcion || !latitud || !longitud || !fotografia) {
             return res.status(400).send({ message: 'Todos los campos son requeridos' });
@@ -17,8 +17,8 @@ module.exports = {
             fotografia,
             audiofile
         })
-            .then(sitio => res.status(201).send(sitio))
-            .catch(error => res.status(400).send({ message: error.message }));
+        .then(sitio => res.status(201).send(sitio))
+        .catch(error => res.status(400).send({ message: error.message }));
     },
 
     list(_, res) {
