@@ -6,7 +6,7 @@ module.exports = {
         const fotografia = req.files.fotografia ? req.files.fotografia[0].path : null;
         const audiofile = req.files.audiofile ? req.files.audiofile[0].path : null;
 
-        if (!descripcion || !latitud || !longitud || !fotografia || !audiofile) {
+        if (!descripcion || !latitud || !longitud || !fotografia) {
             return res.status(400).send({ message: 'Todos los campos son requeridos' });
         }
 
