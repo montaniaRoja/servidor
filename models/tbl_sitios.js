@@ -17,6 +17,7 @@ module.exports = (sequelize, DataTypes) => {
     longitud: DataTypes.STRING,
     fotografia: DataTypes.STRING,
     audiofile: DataTypes.STRING
+  
   }, {
     sequelize,
     modelName: 'Sitio',
